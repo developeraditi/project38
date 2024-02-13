@@ -1,7 +1,8 @@
-"""project38 URL Configuration
+"""
+URL configuration for project38 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
+    https://docs.djangoproject.com/en/5.0/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,13 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,re_path
 from app.views import *
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('SchoolList/',SchoolList.as_view(),name ="SchoolList"),
+    path('SchoolList/',SchoolList.as_view(),name='SchoolList'),
+    path('SchoolCreate/',SchoolCreate.as_view(),name='SchoolCreate'),
 
-    re_path('(?P<pk>\d+)/',SchoolDetail.as_view(),name='details'),
+
+
+    re_path('^update/(?P<pk>\d+)/',SchoolUpdate.as_view(),name='SchoolUpdate'),
+
+    re_path('(?P<pk>\d+)/',SchoolDetail.as_view(),name='detail'),
+
+
+
+
 
 ]
-
